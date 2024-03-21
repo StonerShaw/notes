@@ -7,7 +7,7 @@ theme:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: pink
+      primary: teal
       accent: indigo
       toggle:
         icon: material/toggle-switch-off-outline
@@ -16,7 +16,7 @@ theme:
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: pink
+      primary: teal
       accent: blue
       toggle:
         icon: material/toggle-switch
@@ -51,7 +51,6 @@ markdown_extensions:
 plugins:
   - search
   - roamlinks
-  - blog
   - rss:
       match_path: blog/posts/.* 
       date_from_meta:
