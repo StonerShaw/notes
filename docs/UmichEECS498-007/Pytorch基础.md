@@ -1,4 +1,7 @@
-# Tensor Basis
+---
+title: Pytorch基础
+---
+# Tensor Basisi
 ## Creating and Accessing tensors
 ``` Python
 a = torch.tensor([1, 2, 3])
@@ -161,3 +164,19 @@ x2 = x0.transpose(1, 2).reshape(8, 3)
 ```
 # Tensor operations
  
+## Elementwise operations
+```Python
+x + y, torch.add(x, y), x.add(y)
+x - y, torch.sub(x, y), x.sub(y)
+x * y, mul
+x / y, div
+x ** y, pow
+
+torch.sqrt(x), x.sqrt()
+sin
+cos
+```
+## Reduction operations
+```Python
+
+```
