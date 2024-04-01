@@ -1,11 +1,8 @@
-# TEST title
-Publish your public notes with MkDocs
-#1ss
+>Doing nothing is better than giving up later on.
 
-## Hello World!
+And failing is better than do nothing.
 
-The `index.md` in the `/docs` folder is the homepage you see here.
+Right?
+...
+>当你有机会做出选择的时候，不要让自己后悔。
 
-The folders in `/docs` appear as the main sections on the navigation bar.
-
-The notes appear as pages within these sections. For example, [[Note 1]] in `Topic 1`
