@@ -159,3 +159,4 @@
 - ![](../../img/Pasted%20image%2020240408194719.png)
 - ![](../../img/Pasted%20image%2020240408195542.png)
 - 中断->取IDT表项->check表项DPL，要求DPL>=CPL->切换内核态->装入IDT表项（选择符 与 偏移）
+![](../../img/Pasted%20image%2020240410111512.png)
