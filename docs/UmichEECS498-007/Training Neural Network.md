@@ -152,4 +152,3 @@ Can be interpreted in two ways:
 
 ## Transfer Learning
 ![](../img/Pasted%20image%2020240618111859.png)
-![](../img/Pasted%20image%2020240618111956.png)
