@@ -49,3 +49,7 @@ Downsample
 **ResNet-50 is the same as ResNet-34, but replaces Basic blocks with Bottleneck Blocks.**
 #### 瓶颈块(Bottleneck Block)
 ![](../img/Pasted%20image%2020240617214853.png)
+
+
+### SENet
+### MobileNet
