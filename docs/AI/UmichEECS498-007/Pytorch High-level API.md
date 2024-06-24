@@ -26,7 +26,7 @@ in `torch.nn.functional`
 
 
 ## Module API
-![](../img/Pasted%20image%2020240525173152.png)
+![](../../img/Pasted%20image%2020240525173152.png)
 - 注意在forward中用到的所有layers均应该在__init__中被定义
 ```Python
 class ThreeLayerConvNet(nn.Module):
