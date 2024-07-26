@@ -95,7 +95,7 @@ Solution:
 #### 正交投影Orthographic Projection
 成像面无穷远
 ![](../../img/Pasted%20image%2020240720230350.png)
-#### 透视投影Projective Projection
+#### 透视投影Perspective Projection
 平行线交于一点
 如果将正交投影视作把一个长方体映射到在原点的边长为2的标准立方体，那么透视投影可以视作对一个椎体做映射。那么我们可以先把椎体映射为长方体，再对这个长方体做正交投影
 ![](../../img/Pasted%20image%2020240720230846.png)
@@ -110,4 +110,9 @@ Solution:
 ![](../../img/Pasted%20image%2020240720231858.png)
 ![](../../img/Pasted%20image%2020240720231939.png)
 
+##### 近平面
+透视投影相比于正交投影引入了一个物品/对象之外的东西：近平面。因此我们需要额外地定义近平面的参数。可以直接定义l,r,b,t，也定义**宽高比(aspect ratio)** 以及 **视角(field-of-view, fovY)**
+![](../../img/Pasted%20image%2020240726143924.png)
 
+如何将fovY和aspect转换为l,r,b,t？
+![](../../img/Pasted%20image%2020240726144314.png)
