@@ -40,3 +40,19 @@ Approximate the effect of the 1-pixel box filter by sampling multiple locations 
 MSAA虽然有效，但代价过高
 ![](../../img/Pasted%20image%2020240726152117.png)
 
+### Z-Buffer
+#### Painter's Algorithm
+从后往前画，先画远处的物体，再画近处的物体覆盖远处的物体 
+- Requires sorting in depth (O(n log n) for n triangles) 
+- Can have unresolvable depth order：![](../../img/Pasted%20image%2020240727133841.png)
+
+#### Z-Buffer
+##### Idea
+1. Store current min. z-value for each sample (pixel)
+2. Needs an additional buffer for depth values
+	- frame buffer stores color values(画什么)
+	- depth buffer (z-buffer) stores depth(画的东西的深度)
+
+##### Complexity
+- O(n)
+- But Implemented in hardware for all GPUs
