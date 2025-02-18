@@ -1,0 +1,4380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../AI/UmichEECS498-007/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">
+      
+      
+        <link rel="next" href="../../CPP/About%20Cpp/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+    
+    
+      
+        <title>BDP - Stoner的乱写笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Stoner的乱写笔记" class="md-header__button md-logo" aria-label="Stoner的乱写笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Stoner的乱写笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              BDP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Stoner的乱写笔记" class="md-nav__button md-logo" aria-label="Stoner的乱写笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Stoner的乱写笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            ML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/ML/Ch2.%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%8E%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch2.模型评估与选择
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UmichEECS498 007
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            UmichEECS498 007
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/Attention/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Attention
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/CNN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CNN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/Generative%20Models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generative Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/Neural%20Network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/Object%20Detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object Detection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/Pytorch%20High-level%20API/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytorch High level API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/Pytorch%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytorch基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/RNN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RNN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/Training%20Neural%20Network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training Neural Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/%E4%BC%98%E5%8C%96%E5%99%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    优化器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AI/UmichEECS498-007/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    图像分类
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BDP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            BDP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    BDP
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    BDP
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 并行计算与大数据处理技术概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 并行计算与大数据处理技术概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要并行计算？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="为什么需要并行计算？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高计算机性能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      迫切需要发展并行计算技术的主要原因
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      并行计算技术的分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      并行计算的主要技术问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="并行计算的主要技术问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统性能评估和程序并行度评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI并行程序设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPI并行程序设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI主要功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI基本程序结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpi_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI并行程序设计接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPI并行程序设计接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      通信组（Communicator）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程标识
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      点对点通信
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      节点集合通信接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要大规模数据并行处理？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么MapReduce重要
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.MapReduce简介.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.MapReduce简介.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce的基本模型和处理思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-reduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map Reduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于Map和Reduce的并行计算模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何提供统一的计算框架
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce的主要设计思想
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-1-google-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-1 Google MapReduce基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-1 Google MapReduce基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google MapReduce并行处理的基本过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      带宽优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      失效处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      用数据分区解决数据相关性问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式文件系统GFS的基本工作原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式文件系统GFS的基本工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-gfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google GFS的基本设计原则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-gfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google GFS的基本构架和工作原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google GFS的基本构架和工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gfs-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      GFS Master
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gfs-chunkserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      GFS ChunkServer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据访问工作过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      GFS的系统管理技术
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式结构化数据表BigTable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式结构化数据表BigTable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable的基本作用和设计思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable设计动机和目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable数据模型—多维表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BigTable基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      主服务器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表服务器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sstable" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表的基本存储结构SSTable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表数据格式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="子表数据格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表寻址
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-2-hadoop-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-2 Hadoop MapReduce基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-2 Hadoop MapReduce基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-hdfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop 分布式文件系统HDFS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop 分布式文件系统HDFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hdfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS的基本特征
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HDFS基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secondarynamenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SecondaryNameNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datanode" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataNode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfs_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS可靠性与出错恢复
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HDFS可靠性与出错恢复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namenode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameNode出错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datanode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataNode出错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据出错
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop MapReduce的基本工作原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop MapReduce的基本工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-mapreduce_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop MapReduce基本构架与工作过程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop MapReduce基本构架与工作过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      v1.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v20" class="md-nav__link">
+    <span class="md-ellipsis">
+      v2.0
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-mapreduce_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop MapReduce主要组件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop MapReduce主要组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件输入格式InputFormat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputsplits" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入数据分块InputSplits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recordreader" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据记录读入RecordReader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapper
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combiner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combiner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioner-shuffle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioner &amp; Shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reducer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reducer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outputformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件输出格式OutputFormat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      04 Hadoop安装运行与程序开发
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04 Hadoop安装运行与程序开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop安装方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfs_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS编程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-1-hbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      06-1 HBase基本原理与程序设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06-1 HBase基本原理与程序设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase基本原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HBase基本原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计目标与功能特点...
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设计目标与功能特点...">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase数据模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase的基本构架
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase数据存储管理方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase基本操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HBase基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hbase-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase shell 操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HBase shell 操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      表的管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      表数据的增删查改
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbasedisableenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase中的disable和enable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase编程方法示例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      07 MapReduce高级编程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      08 基于MapReduce的搜索引擎算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08 基于MapReduce的搜索引擎算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagerank" class="md-nav__link">
+    <span class="md-ellipsis">
+      PageRank的基本设计思想和设计原则
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PageRank的基本设计思想和设计原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rank-leak" class="md-nav__link">
+    <span class="md-ellipsis">
+      排名泄露（Rank leak）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      10 Spark系统及编程简介
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10 Spark系统及编程简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么会有Spark？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark的基本构架和组件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark的程序执行过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark的技术特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark环境中其它功能组件简介
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CPP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            CPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPP/About%20Cpp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Cpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图形学
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            图形学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%85%89%E6%A0%85%E5%8C%96Rasterization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    光栅化Rasterization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    光线追踪
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%87%A0%E4%BD%95Geometry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    几何Geometry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%8A%A8%E7%94%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    动画
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E7%9D%80%E8%89%B2Shading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    着色Shading
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E7%BA%BF%E4%BB%A3%E3%80%81%E5%8F%98%E6%8D%A2Transformation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线代、变换Transformation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/Ch1.Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch1.Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/Ch2.%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch2.数据的机器级表示与处理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/Ch3.%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BD%AC%E5%8C%96%E4%B8%8E%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch3.程序的转化与机器级表示
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/Ch4.%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch4.程序的链接
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/Ch6.%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch6.层次结构存储系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/Ch7.%E5%BC%82%E5%B8%B8%E6%8E%A7%E5%88%B6%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch7.异常控制流
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Ch0.Intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch0.Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Ch1.%E9%93%BE%E8%B7%AF%E5%B1%82/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contest
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Contest/Tip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tip
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数学
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            数学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E5%AD%A6/%E6%A6%82%E7%8E%87%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概率论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编辑
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            编辑
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BC%96%E8%BE%91/VSCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VSCode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Obsidian
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Obsidian
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%BC%96%E8%BE%91/Obsidian/Obsidian%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Obsidian语法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 并行计算与大数据处理技术概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 并行计算与大数据处理技术概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要并行计算？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="为什么需要并行计算？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高计算机性能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      迫切需要发展并行计算技术的主要原因
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      并行计算技术的分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      并行计算的主要技术问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="并行计算的主要技术问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统性能评估和程序并行度评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI并行程序设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPI并行程序设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI主要功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI基本程序结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpi_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPI并行程序设计接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPI并行程序设计接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      通信组（Communicator）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程标识
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      点对点通信
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      节点集合通信接口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要大规模数据并行处理？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么MapReduce重要
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.MapReduce简介.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.MapReduce简介.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce的基本模型和处理思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-reduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map Reduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于Map和Reduce的并行计算模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何提供统一的计算框架
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce的主要设计思想
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-1-google-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-1 Google MapReduce基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-1 Google MapReduce基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google MapReduce并行处理的基本过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      带宽优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      失效处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      用数据分区解决数据相关性问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式文件系统GFS的基本工作原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式文件系统GFS的基本工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-gfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google GFS的基本设计原则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-gfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google GFS的基本构架和工作原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google GFS的基本构架和工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gfs-master" class="md-nav__link">
+    <span class="md-ellipsis">
+      GFS Master
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gfs-chunkserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      GFS ChunkServer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据访问工作过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      GFS的系统管理技术
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式结构化数据表BigTable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式结构化数据表BigTable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable的基本作用和设计思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable设计动机和目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable数据模型—多维表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigtable_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigTable基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BigTable基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      主服务器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表服务器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sstable" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表的基本存储结构SSTable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表数据格式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="子表数据格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      子表寻址
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-2-hadoop-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-2 Hadoop MapReduce基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-2 Hadoop MapReduce基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-hdfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop 分布式文件系统HDFS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop 分布式文件系统HDFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hdfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS的基本特征
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HDFS基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secondarynamenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SecondaryNameNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datanode" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataNode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfs_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS可靠性与出错恢复
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HDFS可靠性与出错恢复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namenode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      NameNode出错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datanode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataNode出错
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据出错
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop MapReduce的基本工作原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop MapReduce的基本工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-mapreduce_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop MapReduce基本构架与工作过程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop MapReduce基本构架与工作过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v10" class="md-nav__link">
+    <span class="md-ellipsis">
+      v1.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v20" class="md-nav__link">
+    <span class="md-ellipsis">
+      v2.0
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop-mapreduce_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop MapReduce主要组件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hadoop MapReduce主要组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件输入格式InputFormat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputsplits" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入数据分块InputSplits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recordreader" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据记录读入RecordReader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapper
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combiner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combiner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioner-shuffle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioner &amp; Shuffle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reducer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reducer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outputformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件输出格式OutputFormat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      04 Hadoop安装运行与程序开发
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04 Hadoop安装运行与程序开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoop安装方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfs_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS编程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-1-hbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      06-1 HBase基本原理与程序设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06-1 HBase基本原理与程序设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase基本原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HBase基本原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计目标与功能特点...
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设计目标与功能特点...">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase数据模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase的基本构架
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase数据存储管理方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase基本操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HBase基本操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hbase-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase shell 操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HBase shell 操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      表的管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      表数据的增删查改
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbasedisableenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase中的disable和enable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hbase_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      HBase编程方法示例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      07 MapReduce高级编程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      08 基于MapReduce的搜索引擎算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08 基于MapReduce的搜索引擎算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pagerank" class="md-nav__link">
+    <span class="md-ellipsis">
+      PageRank的基本设计思想和设计原则
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PageRank的基本设计思想和设计原则">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rank-leak" class="md-nav__link">
+    <span class="md-ellipsis">
+      排名泄露（Rank leak）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      10 Spark系统及编程简介
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10 Spark系统及编程简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么会有Spark？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark的基本构架和组件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark的程序执行过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark的技术特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spark_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark环境中其它功能组件简介
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>BDP</h1>
+
+<h2 id="1">1. 并行计算与大数据处理技术概述<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">为什么需要并行计算？<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="_2">提高计算机性能<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>提高处理器字长</li>
+<li>提高集成度</li>
+<li>流水线等微体系结构</li>
+<li>提高处理器频率
+但单核处理器性能提升接近极限：集成度不可能无限提高、指令集并行度接近极限、处理器速度与存储器速度差异越来越大、功耗散热大幅增加</li>
+</ol>
+<h4 id="_3">迫切需要发展并行计算技术的主要原因<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>单处理器性能提升达到极限</li>
+<li>应用领域计算规模和复杂度大幅提高</li>
+</ol>
+<h3 id="_4">并行计算技术的分类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>数据和指令处理结构：弗林(Flynn)分类, SISD, SIMD, MISD, MIMD</li>
+<li>按并行类型: 位级并行、指令级并行、线程级并行、数据级、任务级</li>
+<li>按存储访问构架：共享内存(UMA(Uniform Memory Access)结构)、分布式共享存储(NUMA)、分布式内存(NUMA)</li>
+<li>按系统类型：多核/众核并行计算系统MC（Multicore/Manycore)、对称多处理系统SMP（Symmetric Multi-Processing）、大规模并行处理MPP（Massive Parallel Processing）、集群（Cluster）、网格（Grid）<img alt="" src="../../../img/Pasted%20image%2020240620141625.png" /><img alt="" src="../../../img/Pasted%20image%2020240620141735.png" /></li>
+<li>按计算特征：数据密集型(大规模Web信息检索)、计算密集型(建模与渲染)、数据密集与计算密集混合型(3D电影渲染)</li>
+<li>按并行程序设计模型/方法：共享内存变量 (Shared Memory Variables)、消息传递方式(Message Passing)、MapReduce方式</li>
+</ul>
+<h3 id="_5">并行计算的主要技术问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>多核/多处理器网络互连结构技术
+存储访问体系结构
+分布式数据与文件管理
+并行计算任务分解与算法设计
+并行程序设计模型和方法
+数据同步访问和通信控制
+可靠性设计与容错技术
+并行计算软件框架平台
+系统性能评价和程序并行度评估</p>
+<h4 id="_6">系统性能评估和程序并行度评估<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>Amdahl定律：
+<img alt="" src="../../../img/Pasted%20image%2020240620142804.png" />
+一个并行程序可加速程度是有限制的，并非可无限加速，并非处理器越多越好</p>
+<h3 id="mpi">MPI并行程序设计<a class="headerlink" href="#mpi" title="Permanent link">&para;</a></h3>
+<p>MPI (Message Passing Interface)，<strong>基于消息传递的高性能并行计算编程接口</strong>在处理器间以<strong>消息传递</strong>方式进行<strong>数据通信和同步</strong>，以<strong>库函数</strong>形式为程序员提供了一组易于使用的<strong>编程接口</strong>。
+特点：
+1. 提供<strong>可靠的、面向消息的通信</strong>；
+2. 在高性能科学计算领域广泛使用，适合于处理<strong>计算密集型的</strong>科学计算；
+3. 独立于语言的编程规范，<strong>可移植性</strong>好</p>
+<h4 id="mpi_1">MPI主要功能<a class="headerlink" href="#mpi_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>用常规语言编程方式，<strong>所有节点运行同一个程序</strong>，但处理不同的数据</li>
+<li>提供点对点通信(Point-point communication)</li>
+<li>提供节点集合通信(Collective communication)</li>
+<li>提供<strong>用户自定义的复合数据类型</strong>传输</li>
+</ol>
+<h4 id="mpi_2">MPI基本程序结构<a class="headerlink" href="#mpi_2" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620143207.png" /></p>
+<h4 id="mpi_3">MPI并行程序设计接口<a class="headerlink" href="#mpi_3" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620143337.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240620143355.png" /></p>
+<h5 id="communicator">通信组（Communicator）<a class="headerlink" href="#communicator" title="Permanent link">&para;</a></h5>
+<p>为了在指定的范围内进行通信，可以将系统中的处理器划分为不同的通信组；一个处理器可以同时参加多个通信组；MPI定义了一个最大的缺省通信组: MPI_COMM_WORLD，指明系统中所有的进程都参与通信。一个通信组中的总进程数可以由MPI_Comm_Size调用来确定。</p>
+<h5 id="_7">进程标识<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
+<p>为了在通信时能准确指定一个特定的进程，需要为每个进程分配一个进程标识，一个通信组中每个进程标识号由系统自动编号（从0开始）；进程标识号可以由MPI_Comm_Rank调用来确定</p>
+<h5 id="_8">点对点通信<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
+<ul>
+<li>同步通信：阻塞式通信，等待通信操作完成后才返回(MPI_Send, MPI_Recv)</li>
+<li>同步通信时一定要等到通信操作完成，这会造成处理器空闲，因而可能导致系统效率下降，为此MPI提供异步通信功能</li>
+<li>异步通信：非阻塞式通信，不等待通信操作完成即返回<img alt="" src="../../../img/Pasted%20image%2020240620143618.png" /></li>
+</ul>
+<h4 id="_9">节点集合通信接口<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../../../img/Pasted%20image%2020240622122646.png" /></p>
+<h3 id="_10">为什么需要大规模数据并行处理？<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>数据处理能力大幅落后于数据增长速度</li>
+<li>大数据隐含着更准确的事实</li>
+</ul>
+<h3 id="mapreduce">什么是MapReduce<a class="headerlink" href="#mapreduce" title="Permanent link">&para;</a></h3>
+<ul>
+<li>基于集群的高性能并行计算平台(Cluster Infrastructure)</li>
+<li>并行程序开发与运行框架(Software Framework)</li>
+<li>并行程序设计模型与方法(Programming Model &amp; Methodology)</li>
+</ul>
+<h3 id="mapreduce_1">为什么MapReduce重要<a class="headerlink" href="#mapreduce_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>提供高效的大规模数据处理方法</li>
+<li>改变了大规模尺度上<strong>组织计算的方式</strong></li>
+<li>第一个不同于冯诺依曼结构的、基于集群而非单机的<strong>计算方式</strong>的重大突破</li>
+<li>目前为止最为成功的<strong>基于大规模计算资源</strong>的<strong>并行计算抽象方法</strong></li>
+</ul>
+<h2 id="2mapreduce">2.MapReduce简介.<a class="headerlink" href="#2mapreduce" title="Permanent link">&para;</a></h2>
+<h3 id="mapreduce_2">MapReduce的基本模型和处理思想<a class="headerlink" href="#mapreduce_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>如何对付大数据处理：分而治之</li>
+<li><img alt="" src="../../../img/Pasted%20image%2020240620150937.png" /></li>
+</ul>
+<h3 id="map-reduce">Map Reduce<a class="headerlink" href="#map-reduce" title="Permanent link">&para;</a></h3>
+<p>特点
+- Map和Reduce为程序员提供了一个清晰的<strong>操作接口抽象描述</strong>
+- 描述了对一组数据处理的两个阶段的抽象操作
+- 仅仅描述了<strong>需要做什么</strong>，不需要关注怎么做</p>
+<h3 id="mapreduce_3">基于Map和Reduce的并行计算模型<a class="headerlink" href="#mapreduce_3" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620151323.png" />
+- 各个map函数对所划分的数据并行处理，从不同的输入数据产生不同的中间结果输出
+- 进行reduce处理之前，必须等到所有的map函数做完，因此，在进入reduce前需要有一个同步障(barrier)；这个阶段也负责对map的中间结果数据进行收集整理(aggregation &amp; shuffle)处理，以便reduce更有效地计算最终结果
+- 最终汇总所有reduce的输出结果即可获得最终结果</p>
+<h3 id="_11">如何提供统一的计算框架<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>主要需求和目标：
+- 实现自动并行化计算
+- 为程序员隐藏系统层细节
+MapReduce提供一个统一的计算框架，可完成：
+- 任务调度
+- 数据/代码互定位
+- 出错处理
+- 分布式数据存储与文件管理
+- Combiner和Partitioner（设计目的和作用）
+    - 为了减少数据通信开销，中间结果数据进入reduce节点前需要进行合并(combine)处理，把具有同样主键的数据合并到一起避免重复传送；
+    - 一个reduce节点所处理的数据可能会来自多个map节点，因此，map节点输出的中间结果需使用一定的策略进行适当的划分(partitioner)处理，保证相关数据发送到同一个reduce节点。</p>
+<h3 id="mapreduce_4">MapReduce的主要设计思想<a class="headerlink" href="#mapreduce_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>向“外”横向扩展，而非向“上”纵向扩展</li>
+<li>失效被认为是常态</li>
+<li>把处理向数据迁移</li>
+<li>顺序处理数据、避免随机访问数据</li>
+<li>为应用开发者隐藏系统层细节</li>
+<li>平滑无缝的可扩展性</li>
+</ul>
+<h2 id="03-1-google-mapreduce">03-1 Google MapReduce基本架构<a class="headerlink" href="#03-1-google-mapreduce" title="Permanent link">&para;</a></h2>
+<p>Google的三驾马车
+- GFS
+- MapReduce
+- Bigtable</p>
+<h4 id="google-mapreduce">Google MapReduce并行处理的基本过程<a class="headerlink" href="#google-mapreduce" title="Permanent link">&para;</a></h4>
+<ol>
+<li>有一个待处理的大数据，被划分为大小相同的数据块(如64MB)，及与此相应的用户作业程序</li>
+<li>系统中有一个负责调度的主节点(Master)，以及数据Map和Reduce工作节点(Worker)</li>
+<li>用户作业程序提交给主节点</li>
+<li>主节点为作业程序寻找和配备可用的Map节点，并将程序传送给Map节点</li>
+<li>主节点也为作业程序寻找和配备可用的Reduce节点，并将程序传送给Reduce节点</li>
+<li>主节点启动每个Map节点执行程序，每个Map节点尽可能读取本地或本机架的数据进行计算</li>
+<li>每个Map节点处理读取的数据块,并做一些数据整理工作(combining,sorting等)并将中间结果存放在本地；同时通知主节点计算任务完成并告知中间结果数据存储位置</li>
+<li>主节点等所有Map节点计算完成后，开始启动Reduce节点运行；Reduce节点从主节点所掌握的中间结果数据位置信息，远程读取这些数据</li>
+<li>Reduce节点计算结果汇总输出到一个结果文件即获得整个处理结果</li>
+</ol>
+<h4 id="_12">带宽优化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Q:大量的键值对数据在传送给Reduce节点时会引起较大的通信带宽开销</li>
+<li>A:每个Map节点处理完成的中间键值对将由combiner做一个合并压缩，即把那些键名相同的键值对归并为一个键名下的一组数值。</li>
+</ul>
+<h4 id="_13">计算优化<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Reduce节点必须要等到所有Map节点计算结束才能开始执行，因此，如果有一个计算量大、或者由于某个问题导致很慢结束的Map节点，则会成为严重的“拖后腿者”。</li>
+<li>把一个Map计算任务让多个Map节点同时做，取最快完成者的计算结果。</li>
+</ul>
+<h4 id="_14">失效处理<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<ul>
+<li>主节点失效<ul>
+<li>主节点中会周期性地设置<strong>检查点</strong>(checkpoint)，检查整个计算作业的执行情况，一旦某个任务失效，可以从最近有效的检查点开始重新执行，避免从头开始计算的时间浪费</li>
+<li>如果只有一个Master，它不太可能失败；因此，如果Master失败，将中止MapReduce计算。</li>
+</ul>
+</li>
+<li>工作节点失效<ul>
+<li>工作节点失效是很普遍发生的，主节点会周期性地给工作节点发送检测命令，如果工作节点没有回应，这认为该工作节点失效，主节点将终止该工作节点的任务并把失效的任务重新调度到其它工作节点上重新执行。</li>
+</ul>
+</li>
+</ul>
+<h4 id="_15">用数据分区解决数据相关性问题<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<ul>
+<li>一个Reduce节点上的计算数据可能会来自多个Map节点，因此，为了在进入Reduce节点计算之前，需要把属于一个Reduce节点的数据归并到一起。</li>
+<li>在Map阶段进行了Combining以后，可以根据一定的策略对Map输出的中间结果进行分区(partitioning)，这样即可解决以上数据相关性问题避免Reduce计算过程中的数据通信。</li>
+</ul>
+<h3 id="gfs">分布式文件系统GFS的基本工作原理<a class="headerlink" href="#gfs" title="Permanent link">&para;</a></h3>
+<h4 id="google-gfs">Google GFS的基本设计原则<a class="headerlink" href="#google-gfs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>廉价本地磁盘分布存储</strong></li>
+<li><strong>多数据自动备份</strong>解决可靠性</li>
+<li>为<strong>上层</strong>的MapReduce计算框架提供支撑</li>
+</ul>
+<h4 id="google-gfs_1">Google GFS的基本构架和工作原理<a class="headerlink" href="#google-gfs_1" title="Permanent link">&para;</a></h4>
+<h5 id="gfs-master">GFS Master<a class="headerlink" href="#gfs-master" title="Permanent link">&para;</a></h5>
+<p>Master上保存了GFS文件系统的三种元数据：
+1. 命名空间(Name Space)即整个分布式文件系统的目录结构
+2. 文件名与Chunk的映射表
+3. Chunk副本的位置信息，每一个Chunk默认有3个副本
+1.2.通过操作日志提供容错处理能力，3.保存在ChunkServer上，Master启动/ChunkServe注册时完成在ChunkServer上的生成。</p>
+<h5 id="gfs-chunkserver">GFS ChunkServer<a class="headerlink" href="#gfs-chunkserver" title="Permanent link">&para;</a></h5>
+<ul>
+<li>GFS中每个数据块划分缺省为64MB</li>
+<li>每个数据块会分别在3个(缺省情况下)不同的地方复制副本；</li>
+<li>对每一个数据块，仅当3个副本都更新成功时，才认为数据保存成功。</li>
+<li>当某个副本失效时，Master会自动将正确的副本数据进行复制以保证足够的副本数；</li>
+</ul>
+<h4 id="_16">数据访问工作过程<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620155504.png" /></p>
+<h4 id="gfs_1">GFS的系统管理技术<a class="headerlink" href="#gfs_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>大规模集群安装技术</li>
+<li>故障检测技术</li>
+<li>节点动态加入技术</li>
+<li>节能技术</li>
+</ol>
+<h3 id="bigtable">分布式结构化数据表BigTable<a class="headerlink" href="#bigtable" title="Permanent link">&para;</a></h3>
+<h4 id="bigtable_1">BigTable的基本作用和设计思想<a class="headerlink" href="#bigtable_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>GFS是一个文件系统，难以提供对<strong>结构化数据</strong>的存储和访问管理。为此，Google在GFS之上又设计了一个<strong>结构化数据存储和访问管理系统</strong>——BigTable，为应用程序提供比单纯的文件系统更方便、更高层的数据操作能力。</li>
+</ul>
+<h4 id="bigtable_2">BigTable设计动机和目标<a class="headerlink" href="#bigtable_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>需要存储管理<strong>海量的结构化半结构化数据</strong></li>
+<li>海量的<strong>服务请求</strong></li>
+<li><strong>商用数据库无法适用</strong></li>
+</ul>
+<h4 id="bigtable_3">BigTable数据模型—多维表<a class="headerlink" href="#bigtable_3" title="Permanent link">&para;</a></h4>
+<p>BigTable主要是一个分布式多维表，表中的数据通过：
+- 一个行关键字（row key）
+- 一个列关键字（column key）
+- 一个时间戳（timestamp）
+进行索引和查询定位的。</p>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620160354.png" /></p>
+<h4 id="bigtable_4">BigTable基本架构<a class="headerlink" href="#bigtable_4" title="Permanent link">&para;</a></h4>
+<h5 id="_17">主服务器<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h5>
+<ul>
+<li>新子表分配</li>
+<li>子表服务器监控</li>
+<li>负载均衡</li>
+</ul>
+<h5 id="_18">子表服务器<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h5>
+<ul>
+<li>BigTable中的数据都以子表形式保存在子表服务器上，客户端程序也直接和子表服务器通信。</li>
+<li>当一个新子表产生，子表服务器的主要问题包括子表的<strong>定位、分配、及子表数据的最终存储。</strong></li>
+</ul>
+<h5 id="sstable">子表的基本存储结构SSTable<a class="headerlink" href="#sstable" title="Permanent link">&para;</a></h5>
+<ul>
+<li>SSTable是BigTable内部的基本存储结构，以GFS文件形式存储在GFS文件系统中。一个SSTable实际上对应于GFS中的一个64MB的数据块(Chunk)</li>
+<li>SSTable中的数据进一步划分为64KB的子块，因此一个SSTable可以有多达1千个这样的子块。为了维护这些子块的位置信息，需要使用一个Index索引</li>
+</ul>
+<h4 id="_19">子表数据格式<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<ul>
+<li>概念上子表是整个大表的多行数据划分后构成。而一个子表服务器上的子表将进一步由很多个SSTable构成，每个SSTable构成最终的在底层GFS中的存储单位。</li>
+<li>一个SSTable还可以为不同的子表所共享，以避免同样数据的重复存储。</li>
+</ul>
+<h5 id="_20">子表寻址<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h5>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620161327.png" /></p>
+<h2 id="03-2-hadoop-mapreduce">03-2 Hadoop MapReduce基本架构<a class="headerlink" href="#03-2-hadoop-mapreduce" title="Permanent link">&para;</a></h2>
+<h3 id="hadoop-hdfs">Hadoop 分布式文件系统HDFS<a class="headerlink" href="#hadoop-hdfs" title="Permanent link">&para;</a></h3>
+<h4 id="hdfs">HDFS的基本特征<a class="headerlink" href="#hdfs" title="Permanent link">&para;</a></h4>
+<ul>
+<li>模仿Google GFS设计实现</li>
+<li>提供对数据的快速访问；并提供良好的<strong>可扩展性</strong></li>
+<li>提供数据的<strong>高可靠性</strong>和<strong>容错能力</strong><ul>
+<li>多副本数据块形式存储</li>
+</ul>
+</li>
+<li>与GFS类似，HDFS是MapReduce的<strong>底层数据存储支撑</strong></li>
+<li>存储极大数目的信息，支持很大的单个文件。</li>
+<li>HDFS对<strong>顺序读</strong>进行了优化</li>
+<li>数据支持<strong>一次写入，多次读取</strong>；<strong>不支持</strong>已写入数据的<strong>更新</strong>操作。</li>
+<li>数据不进行本地缓存</li>
+<li><strong>基于块</strong>的文件存储，默认的块的大小是64MB</li>
+</ul>
+<h4 id="hdfs_1">HDFS基本架构<a class="headerlink" href="#hdfs_1" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620162442.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240620162453.png" /></p>
+<h5 id="namenode">NameNode<a class="headerlink" href="#namenode" title="Permanent link">&para;</a></h5>
+<ul>
+<li>负责管理分布式文件系统的命名空间（Namespace）<ul>
+<li>FsImage用于维护文件系统树以及文件树中所有的文件和文件夹的<strong>元数据</strong></li>
+<li>操作日志文件EditLog中记录了所有针对文件的<strong>创建、删除、重命名</strong>等操作</li>
+</ul>
+</li>
+<li>名称节点记录了每个文件中<strong>各个块</strong>所在的数据节点的<strong>位置</strong>信息</li>
+</ul>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620162842.png" />
+名称节点运行期间EditLog不断变大的问题</p>
+<h5 id="secondarynamenode">SecondaryNameNode<a class="headerlink" href="#secondarynamenode" title="Permanent link">&para;</a></h5>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620163007.png" /></p>
+<h5 id="datanode">DataNode<a class="headerlink" href="#datanode" title="Permanent link">&para;</a></h5>
+<p>分布式文件系统HDFS的工作节点，负责数据的存储和读取，会根据客户端或者是名称节点的调度来进行数据的存储和检索，并且向名称节点定期发送自己所存储的块的列表。</p>
+<h4 id="hdfs_2">HDFS可靠性与出错恢复<a class="headerlink" href="#hdfs_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>DataNode节点的检测<ul>
+<li>NameNode不断检测DataNode是否有效</li>
+<li>若失效，则寻找新的节点替代，将失效节点数据重新分布</li>
+</ul>
+</li>
+<li>集群负载均衡</li>
+<li>数据一致性：校验和(checksum)</li>
+<li>主节点元数据失效</li>
+</ul>
+<h5 id="namenode_1">NameNode出错<a class="headerlink" href="#namenode_1" title="Permanent link">&para;</a></h5>
+<p>HDFS设置了备份机制，把这些核心文件同步复制到备份服务器SecondaryNameNode上。当名称节点出错时，就可以根据备份服务器SecondaryNameNode中的FsImage和Editlog数据进行恢复。</p>
+<h5 id="datanode_1">DataNode出错<a class="headerlink" href="#datanode_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li>每个数据节点会定期向NameNode发送“心跳”信息，向Namenode报告自己的状态。</li>
+<li>NameNode会定期检查副本数量，一旦发现某个数据块的副本数量小于冗余因子，就会启动数据冗余复制，为它生成新的副本。</li>
+<li><strong>HDFS和其它分布式文件系统的最大区别就是可以调整冗余数据的位置。</strong></li>
+</ul>
+<h5 id="_21">数据出错<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h5>
+<ul>
+<li>客户端在读取到数据后，会采用md5和sha1对数据块进行校验，以确定读取到正确的数据。</li>
+<li>在文件被创建时，客户端就会对每一个文件块进行信息摘录，并把这些信息写入到同一个路径的隐藏文件里面。</li>
+<li>当客户端读取文件的时候，会先读取该信息文件，然后，利用该信息文件对每个读取的数据块进行校验，如果校验出错，客户端就会请求到另外一个数据节点读取该文件块，并且向名称节点报告这个文件块有错误，名称节点会定期检查并且重新复制这个块。</li>
+</ul>
+<h3 id="hadoop-mapreduce">Hadoop MapReduce的基本工作原理<a class="headerlink" href="#hadoop-mapreduce" title="Permanent link">&para;</a></h3>
+<h4 id="hadoop-mapreduce_1">Hadoop MapReduce基本构架与工作过程<a class="headerlink" href="#hadoop-mapreduce_1" title="Permanent link">&para;</a></h4>
+<h5 id="v10">v1.0<a class="headerlink" href="#v10" title="Permanent link">&para;</a></h5>
+<p>JobTracker与TaskTracker，对等于GoogleMP中的Master与Worker
+单点故障、可扩展性差、资源分配不合理</p>
+<h5 id="v20">v2.0<a class="headerlink" href="#v20" title="Permanent link">&para;</a></h5>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620164155.png" /></p>
+<h4 id="hadoop-mapreduce_2">Hadoop MapReduce主要组件<a class="headerlink" href="#hadoop-mapreduce_2" title="Permanent link">&para;</a></h4>
+<h5 id="inputformat">文件输入格式InputFormat<a class="headerlink" href="#inputformat" title="Permanent link">&para;</a></h5>
+<ul>
+<li>定义了数据文件如何分割和读取</li>
+<li>定义InputSplits，将一个文件分开成为任务</li>
+<li>为RecordReader提供一个工厂，用来读取这个文件
+当启动一个Hadoop任务的时候，一个输入文件所在的目录被输入到FileInputFormat对象中。
+FileInputFormat从这个目录中读取所有文件。然后FileInputFormat将这些文件分割为一个或者多
+个InputSplits。
+通过在JobConf对象上设置JobConf.setInputFormat设置文件输入的格式。</li>
+</ul>
+<h5 id="inputsplits">输入数据分块InputSplits<a class="headerlink" href="#inputsplits" title="Permanent link">&para;</a></h5>
+<ul>
+<li>InputSplit定义了输入到单个Map任务的输入数据</li>
+<li>一个MapReduce程序被统称为一个Job</li>
+<li>InputSplit将文件分为64MB的大小<ul>
+<li>配置文件hadoop-site.xml中的mapred.min.split.size参数控制这个大小</li>
+</ul>
+</li>
+<li>mapred.tasktracker.map.task.maximum用来控制某一个节点上所有map任务的最大数目</li>
+</ul>
+<h5 id="recordreader">数据记录读入RecordReader<a class="headerlink" href="#recordreader" title="Permanent link">&para;</a></h5>
+<ul>
+<li>InputSplit定义了一项工作的大小，但是没有定义如何读取数据</li>
+<li>RecordReader实际上定义了如何从数据上转化为一个(key,value)对的详细方法，并将数据输出到Mapper类中</li>
+<li>TextInputFormat提供了LineRecordReader</li>
+</ul>
+<h5 id="mapper">Mapper<a class="headerlink" href="#mapper" title="Permanent link">&para;</a></h5>
+<ul>
+<li>每一个Mapper类的实例生成了一个Java进程（在某一个InputSplit上执行）</li>
+<li>有两个额外的参数OutputCollector以及Reporter，前者用来收集中间结果，后者用来获得环境参数以及设置当前执行的状态。</li>
+</ul>
+<h5 id="combiner">Combiner<a class="headerlink" href="#combiner" title="Permanent link">&para;</a></h5>
+<ul>
+<li>合并相同key的键值对，减少partitioner时候的数据通信开销；</li>
+<li>是在本地执行的一个Reducer，满足一定的条件才能够执行。</li>
+</ul>
+<h5 id="partitioner-shuffle">Partitioner &amp; Shuffle<a class="headerlink" href="#partitioner-shuffle" title="Permanent link">&para;</a></h5>
+<p>在Map工作完成之后，每一个 Map函数会将结果传到对应的Reducer所在的节点，此时，用户可以提供一个Partitioner类，用来决定一个给定的(key,value)对传输的具体位置。</p>
+<h5 id="sort">Sort<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h5>
+<p>传输到每一个节点上的所有的Reduce函数接收到的(key,value)都会被Hadoop自动排序（即Map生成的结果传送到某一个节点的时候，会被自动排序）</p>
+<h5 id="reducer">Reducer<a class="headerlink" href="#reducer" title="Permanent link">&para;</a></h5>
+<ul>
+<li>执行用户定义的Reduce操作</li>
+<li>接收到一个OutputCollector的类作为输出</li>
+</ul>
+<h5 id="outputformat">文件输出格式OutputFormat<a class="headerlink" href="#outputformat" title="Permanent link">&para;</a></h5>
+<ul>
+<li>写入到HDFS的所有OutputFormat都继承自FileOutputFormat</li>
+<li>每一个Reducer都写一个文件到一个共同的输出目录，文件名是part-nnnnn，其中nnnnn是与每一个reducer相关的一个号（partition id）</li>
+<li>FileOutputFormat.setOutputPath()</li>
+<li>JobConf.setOutputFormat()</li>
+</ul>
+<h2 id="04-hadoop">04 Hadoop安装运行与程序开发<a class="headerlink" href="#04-hadoop" title="Permanent link">&para;</a></h2>
+<h3 id="hadoop">Hadoop安装方式<a class="headerlink" href="#hadoop" title="Permanent link">&para;</a></h3>
+<p>单机模式、单机伪分布模式、集群模式
+?????????????????????</p>
+<h3 id="hdfs_3">HDFS编程<a class="headerlink" href="#hdfs_3" title="Permanent link">&para;</a></h3>
+<p>FileSystem基类
+- FileSystem是一个通用文件系统的抽象基类，可以被分布式文件系统继承，所有可能使用Hadoop文件系统的代码，都要使用这个类
+- FileSystem的open()方法返回的是一个输入流FSDataInputStream对象，在HDFS文件系统中，具体的输入流就是DFSInputStream；FileSystem中的create()方法返回的是一个输出流FSDataOutputStream对象，在HDFS文件系统中，具体的输出流就是DFSOutputStream。
+创建文件
+<code>public FSDataOutputStream create(Path f);</code>
+打开文件
+<code>public abstract FSDataInputStream open(Path f,int bufferSize) throws IOException</code>
+获取文件信息
+<code>public abstract FileStatus getFileStatus(Path f) throws IOException;</code>
+获取目录信息
+<code>public FileStatus[] listStatus(Path f) throws IOException;</code>
+文件读取
+<code>public final int read(byte[] b) throws IOException</code>
+文件写入
+<code>public void write(byte[] b,int off,int len) throws IOException</code>
+关闭
+<code>public void close()throws IOException</code>
+删除
+<code>public abstract boolean delete(Path f, boolean recursive) throws IOException</code></p>
+<h2 id="06-1-hbase">06-1 HBase基本原理与程序设计<a class="headerlink" href="#06-1-hbase" title="Permanent link">&para;</a></h2>
+<h3 id="hbase">HBase基本原理<a class="headerlink" href="#hbase" title="Permanent link">&para;</a></h3>
+<h4 id="_22">设计目标与功能特点...<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h5 id="_23">目标<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>应对HDFS局限</strong>，提供一个分布式数据管理系统</li>
+<li>提供基于列存储模式的大数据表管理能力</li>
+<li>HBase试图提供<strong>随机和实时</strong>的数据读写访问能力</li>
+<li>具有<strong>高可扩展性</strong>、<strong>高可用性</strong>、<strong>容错处理能力</strong>、<strong>负载平衡能力</strong>、实时数据查询能力</li>
+</ol>
+<h5 id="_24">特点<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h5>
+<ol>
+<li>列式存储</li>
+<li>表数据是稀疏的多维映射表</li>
+<li>读写的严格一致性（区别于Cassandra的最终一致性）</li>
+<li>提供很高的数据读写速度，为<strong>写数据</strong>进行了特别优化</li>
+<li><strong>良好的线形可扩展性</strong></li>
+<li>提供海量数据存储能力</li>
+<li>数据会<strong>自动分片</strong></li>
+<li>具有自动的<strong>失效检测</strong>和恢复能力，保证数据不丢失</li>
+<li>提供了方便的与<strong>HDFS和MapReduce集成的能力</strong></li>
+<li>提供<strong>Java</strong> API作为编程接口</li>
+</ol>
+<h3 id="hbase_1">HBase数据模型<a class="headerlink" href="#hbase_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>HBase的数据模型是一个<strong>稀疏、多维度、排序</strong>的映射表，这张表的索引是<strong>行键、列族、列限定符和时间戳</strong>。</li>
+<li>所有数据都以<strong>字符串</strong>进行存储，用户需要自行进行数据类型的转换</li>
+<li><strong>每一行</strong>都有一个可排序的<strong>行键</strong>和<strong>任意多的列</strong></li>
+<li>表由一个或多个<strong>列族</strong>组成，一个列族可以包含很多个<strong>列</strong>。列族支持动态扩展，不需要预定义数量及类型。</li>
+<li>
+<p>由行键、列族、列限定符可以确定一个单元格，单元格内有数据的不同版本（HBase执行更新操作时不删除，只生成新的），再使用<strong>时间戳</strong>进行索引。</p>
+</li>
+<li>
+<p>行主键：用来检索记录的主键</p>
+<ul>
+<li>通过单个row key访问/通过row key的范围range来访问/全表扫描。</li>
+<li>存储时，数据按照Row key的字典序排序存储，因此应该将经常一起读取的行存储放到一起。</li>
+<li>行的一次读写是原子操作。</li>
+</ul>
+</li>
+<li>列族：<ul>
+<li>HBase表中的每个列，都归属于某个列族，<strong>列名都以列族作为前缀</strong>。</li>
+<li><strong>列族</strong>是表的schema的一部分，<strong>必须在使用表之前定义。</strong></li>
+<li><strong>访问控制</strong>（读/写）、磁盘和内存的使用统计都是在列族层面进行的。</li>
+</ul>
+</li>
+<li>
+<p>时间戳：</p>
+<ul>
+<li>每个cell都保存着同一份数据的多个版本。</li>
+<li>HBase 提供了两种数据版本回收方式。一是保存数据的最后 n 个版本，二是保存最近一段时间内的版本（比如最近七天）。可以针对每个列族进行设置。</li>
+</ul>
+</li>
+<li>
+<p>HBase通过行关键字、列（列族：列名）和时间戳确定一个存储单元，即：</p>
+<ul>
+<li>{row key, column family, column name, timestamp} -&gt; value</li>
+</ul>
+</li>
+<li>HBase可以支持的查询方式：<ul>
+<li>通过单个row key访问</li>
+<li>通过row key的范围来访问</li>
+<li>全表扫描</li>
+</ul>
+</li>
+</ul>
+<h3 id="hbase_2">HBase的基本构架<a class="headerlink" href="#hbase_2" title="Permanent link">&para;</a></h3>
+<p>由一个MasterServer和由一组子表数据区服务器RegionServer构成，分别存储逻辑大表中的部分数据。大表中的底层数据存于HDFS中。
+- <strong>Master：</strong> 主服务器 Master 主要负责表和 Region 的管理工作：
+    - 管理用户对表的增加、删除、修改、查询等操作
+    - 实现不同Region服务器之间的<strong>负载均衡</strong>
+    - 在Region分裂或合并后，负责重新调整Region的分布
+    - 对发生故障失效的Region服务器上的Region进行迁移
+- <strong>RegionServer</strong>：服务器是HBase中最核心的模块，负责维护分配给自己的Region，并响应用户的读写请求</p>
+<h3 id="hbase_3">HBase数据存储管理方法<a class="headerlink" href="#hbase_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>HBase主服务器<ul>
+<li>与BigTable类似，HBase使用主服务器HServer来管理所有子表服务器。主服务器维护所有子表服务器在任何时刻的状态</li>
+<li>当一个新的子表服务器注册时，主服务器让新的子表服务器装载子表</li>
+<li>若主服务器与子表服务器连接超时，那么子表服务器将自动停止，并重新启动；而主服务器则假定该子表服务器已死机，将其上的数据转移至其它子表服务器，将其上的子表标注为空闲，并在重新启动后另行分配使用。</li>
+</ul>
+</li>
+<li>HBase子表数据存储与子表服务器<ul>
+<li>与BigTable类似，大表被分为很多个子表（Region），每个子表存储在一个子表服务器RegionServer上<ul>
+<li>每个Region由以下信息标识：</li>
+<li>&lt;表名，该Region的起始row key，创建时间&gt;每个Region的最佳大小取决于单台服务器的有效处理能力</li>
+<li><strong>同一个Region不会被分拆到多个Region服务器</strong></li>
+<li>每个Region服务器存储10-1000个Region</li>
+</ul>
+</li>
+<li>每个子表中的数据区<strong>Region由很多个数据存储块Store构成</strong>，而每个Store数据块又由存放在内存中的memStore和存放在文件中的StoreFile构成<img alt="" src="../../../img/Pasted%20image%2020240620193252.png" /></li>
+</ul>
+</li>
+<li>HBase数据的访问<ul>
+<li>当客户端需要进行数据更新时，先查到子表服务器，然后向子表提交数据更新请求。提交的数据并不直接存储到磁盘上的数据文件中，而是添加到一个基于内存的子表数据对象memStore中，当memStore中的数据达到一定大小时，系统将自动将数据写入到文件数据块StoreFile中。</li>
+<li>每个文件数据块StoreFile最后都写入到底层基于HDFS的文件中。</li>
+<li>需要查询数据时，子表先查memStore。如果没有，则再查磁盘上的StoreFile。每个StoreFile都有类似B树的结构，允许进行快速的数据查询。<strong>StoreFile将定时压缩</strong>，多个压缩为一个。</li>
+<li>两个小的子表可以进行合并；子表大到超过某个指定值时，子表服务器就需要调用HRegion.closeAndSplit()，把它分割为两个新的子表。</li>
+</ul>
+</li>
+<li>HBase数据记录的查询定位<ul>
+<li><strong>描述所有子表和子表中数据块的元数据都存放在专门的元数据表中</strong>，并存储在特殊的子表中。子表元数据会不断增长，因此会使用多个子表来保存。而<strong>所有元数据子表的元数据都保存在根子表中</strong>。<strong>主服务器会扫描根子表，从而得到所有的元数据子表位置，再进一步扫描这些元数据子表即可获得所寻找子表的位置。</strong></li>
+</ul>
+</li>
+<li>HBase使用三层类似B+树的结构来保存Region位置<ul>
+<li>通过Zookeeper里的文件得到-ROOT-表的位置，-ROOT-表永远不会被分割为多个Region</li>
+<li>通过-ROOT-表<strong>查找.META.表</strong>中<strong>相应Region</strong>的位置，为了加快访问，.META.表的全部Region的数据都会全部保存在<strong>内存</strong>中</li>
+<li>通过.META.表找到所要的用户表相应Region的位置<img alt="" src="../../../img/Pasted%20image%2020240620194104.png" /></li>
+</ul>
+</li>
+<li><img alt="" src="../../../img/Pasted%20image%2020240620194342.png" /></li>
+<li><img alt="" src="../../../img/Pasted%20image%2020240620194403.png" /></li>
+<li>客户端访问数据时的“三级寻址”<ul>
+<li>为了加速寻址，客户端会缓存位置信息，同时，需要解决缓存失效问题</li>
+<li>寻址过程客户端只需要询问Zookeeper服务器，不需要连接Master服务器</li>
+</ul>
+</li>
+</ul>
+<h3 id="hbase_4">HBase基本操作<a class="headerlink" href="#hbase_4" title="Permanent link">&para;</a></h3>
+<h4 id="hbase-shell">HBase shell 操作<a class="headerlink" href="#hbase-shell" title="Permanent link">&para;</a></h4>
+<h5 id="_25">表的管理<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>查看有哪些表</strong>：<code>list</code></li>
+<li><strong>创建表</strong>：<code>create &lt;table&gt;, {NAME =&gt; &lt;family&gt;[, VERSIONS =&gt; &lt;VERSIONS&gt;]}</code></li>
+<li><strong>删除表</strong>：`disable <table>, drop <table></li>
+<li><strong>查看表结构</strong>：<code>describe &lt;table&gt;</code></li>
+<li><strong>修改表结构</strong>：<code>alter 't1', {NAME =&gt; 'f1'}, {NAME =&gt; 'f2', METHOD =&gt; 'delete'}</code><ul>
+<li><code>{NAME =&gt; 'f1'}</code>：第一个修改操作。它没有指定 <code>METHOD</code> 属性，所以<strong>默认</strong>是<strong>添加</strong>或者修改名为 <code>f1</code> 的<strong>列族</strong>。如果列族 <code>f1</code> 已经存在，它将保持不变，除非指定了额外的属性来修改它。</li>
+</ul>
+</li>
+</ul>
+<h5 id="_26">表数据的增删查改<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>添加数据</strong>：<code>put &lt;table&gt;,&lt;rowkey&gt;,&lt;family:column&gt;,&lt;value&gt;,&lt;timestamp&gt;</code></li>
+<li><strong>查询某行记录</strong>（获取行）：<code>get &lt;table&gt;,&lt;rowkey&gt;[,&lt;family:column&gt;,&lt;timestamp&gt;]</code></li>
+<li><strong>扫描表</strong>(获取列)：<code>scan &lt;table&gt;, {COLUMNS =&gt; [ &lt;family:column&gt;,.... ], LIMIT =&gt; num}</code></li>
+<li><strong>查询表中的数据行数</strong>：<code>count &lt;table&gt;, {INTERVAL =&gt; intervalNum, CACHE =&gt; cacheNum}</code><ul>
+<li><code>INTERVAL</code>: 每处理<code>intervalNum</code><strong>行数据</strong>后，会向客户端报告进度。</li>
+<li><code>CACHE</code>: 用于指定在单个RPC请求中预取的行数，以提高扫描操作的性能。</li>
+</ul>
+</li>
+<li><strong>删除行中的某个列值</strong>（必须指定列名）：<code>delete &lt;table&gt;, &lt;rowkey&gt;, &lt;family:column&gt; , &lt;timestamp&gt;</code></li>
+<li><strong>删除行</strong>：<code>deleteall '&lt;table&gt;', '&lt;rowkey&gt;'</code></li>
+<li><strong>删除表中的所有数据</strong>：<code>truncate &lt;table&gt;</code></li>
+</ul>
+<h5 id="hbasedisableenable">HBase中的disable和enable<a class="headerlink" href="#hbasedisableenable" title="Permanent link">&para;</a></h5>
+<ul>
+<li>disable和enable都是HBase中比较常见的操作，很多对table的修改都需要表在disable的状态下才能进行</li>
+<li>disable ′students′将表students的状态更改为disable的时候，HBase会在zookeeper中的table结点下做记录</li>
+<li>在zookeeper记录下该表的同时，还会将表的region全部下线，region为offline状态</li>
+<li>enable的过程和disable相反，会把表的所有region上线，并删除zookeeper下的标志。如果在enable前，META中有region的server信息，那么此时会在该server上将该region 上线；如果没有server的信息，那么此时还要随机选择一台机器作为该region的server</li>
+</ul>
+<h3 id="hbase_5">HBase编程方法示例<a class="headerlink" href="#hbase_5" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../../../img/Pasted%20image%2020240620200110.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240620200206.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240620200225.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240620200311.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240620200323.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240620200416.png" /></p>
+<h2 id="07-mapreduce">07 MapReduce高级编程<a class="headerlink" href="#07-mapreduce" title="Permanent link">&para;</a></h2>
+<h2 id="08-mapreduce">08 基于MapReduce的搜索引擎算法<a class="headerlink" href="#08-mapreduce" title="Permanent link">&para;</a></h2>
+<h3 id="pagerank">PageRank的基本设计思想和设计原则<a class="headerlink" href="#pagerank" title="Permanent link">&para;</a></h3>
+<p>从许多优质的网页链接过来的网页，必定还是优质网页。一个网页要想拥有较高的PR值的条件：
+1. 有很多网页链接到它；（数量假设）
+2. 有高质量的网页链接到它。（质量假设）
+如果网页T存在一个指向网页A的连接，则表明T的所有者认为A比较重要，从而把T的一部分重要性得分赋予A。这个重要性得分值为：PR(T)/L(T)
+- 其中PR(T)为T的PageRank值，L(T)为T的出链数
+- 则A的PageRank值为一系列类似于T的页面重要性得分值的累加。
+<img alt="" src="../../../img/Pasted%20image%2020240622190452.png" /></p>
+<h4 id="rank-leak">排名泄露（Rank leak）<a class="headerlink" href="#rank-leak" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../../../img/Pasted%20image%2020240622190523.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240622190627.png" /></p>
+<p><img alt="" src="../../../img/Pasted%20image%2020240622190740.png" /></p>
+<p>频繁项可以看作是两个或多个对象的“亲密”程度，如果同时出现的
+次数很多，那么这两个或多个对象可以认为是高关联性的。当这些高
+关联性对象的项集出现次数满足一定阈值时即称其为频繁项。</p>
+<h2 id="10-spark">10 Spark系统及编程简介<a class="headerlink" href="#10-spark" title="Permanent link">&para;</a></h2>
+<h3 id="spark">为什么会有Spark？<a class="headerlink" href="#spark" title="Permanent link">&para;</a></h3>
+<ol>
+<li>MapReduce计算模式的缺陷<ol>
+<li>为高吞吐量数据处理设计，在低延时上表现不好</li>
+<li>2阶段固定模式，磁盘大量IO，性能低下</li>
+</ol>
+</li>
+<li>大数据计算模式的新变化(2013年)<ol>
+<li>由于Hadoop计算框架对很多非批处理大数据问题的局限性，除了原有的基于Hadoop HBase的数据存储管理模式和MapReduce计算模式外，人们开始关注大数据处理所需要的其他各种计算模式和系统。</li>
+<li>后Hadoop时代新的大数据计算模式和系统出现，其中尤其以<strong>内存计算</strong>为核心、集诸多计算模式之大成的Spark生态系统的出现为典型代表。</li>
+</ol>
+</li>
+<li>Spark基于内存计算思想提高计算性能<ol>
+<li>Spark提出了一种<strong>基于内存</strong>的<strong>弹性分布式数据集(RDD)</strong>，通过对RDD的一系列操作完成计算任务，可以大大提高性能</li>
+<li>同时一组RDD形成可执行的有向无环图DAG，构成灵活的计算流图</li>
+</ol>
+</li>
+<li>弹性分布式数据集Resilient Distributed Datasets (RDDs)<ol>
+<li>Spark的主要抽象是提供一个弹性分布式数据集(RDD)，RDD 是指能横跨集群所有节点进行并行计算的<strong>分区元素集合</strong>。RDD可以从Hadoop的文件系统中的一个文件中创建而来(或其他 Hadoop支持的文件系统)，或者从一个已有的Scala集合转换得到。</li>
+<li>Spark使用RDD以及对应的Transform/Action等操作算子执行分布式计算。</li>
+<li>基于RDD之间的依赖关系组成lineage，重计算以及checkpoint等机制来保证整个分布式计算的容错性。</li>
+<li>只读、可分区，这个数据集的全部或部分可以缓存在内存中，在多次计算间重用，弹性是指内存不够时可以与磁盘进行交换。</li>
+</ol>
+</li>
+</ol>
+<h3 id="spark_1">Spark的基本构架和组件<a class="headerlink" href="#spark_1" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../../../img/Pasted%20image%2020240623223714.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240623223800.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240623224055.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240623224153.png" /></p>
+<h3 id="spark_2">Spark的程序执行过程<a class="headerlink" href="#spark_2" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../../../img/Pasted%20image%2020240623224401.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240623224414.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240623224544.png" />
+<img alt="" src="../../../img/Pasted%20image%2020240623224728.png" /></p>
+<h3 id="spark_3">Spark的技术特点<a class="headerlink" href="#spark_3" title="Permanent link">&para;</a></h3>
+<p>基于内存计算的弹性分布式数据集(RDD)
+灵活的计算流图(DAG)
+覆盖多种计算模式（查询分析，批处理，流式计算，迭代计算，图计算，内存计算）</p>
+<h3 id="spark_4">Spark环境中其它功能组件简介<a class="headerlink" href="#spark_4" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
